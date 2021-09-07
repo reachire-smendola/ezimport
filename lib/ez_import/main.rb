@@ -25,7 +25,7 @@ module EzImport
       model_name = model_name.downcase.gsub('_','')
       Dir.glob("#{Rails.root}/app/models/**/*rb").each{|m| require_or_load m }
       model_list = {}
-      ActiveRecord::Base.descendants.each {|m| puts m.to_s; model_list[m.to_s.downcase] = m}
+      ActiveRecord::Base.descendants.each {|m| model_list[m.to_s.downcase] = m}
       m1 = model_list[model_name].to_s.underscore
       m2 = model_list[model_name]
       [m1, m2]
